@@ -210,4 +210,7 @@ __marimo__/
 data/*
 !data/.gitkeep
 
+results/*
+!results/.gitkeep
+
 ioaa_data.json

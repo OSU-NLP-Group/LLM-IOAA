@@ -19,7 +19,7 @@ class LiteLlmEngine():
                 os.environ["OPENAI_API_KEY"] = model_args_dict["openai_api_key"]
 
 
-    def respond(self, messages, temperature=1.0, top_p=1.0, max_tokens=16384):
+    def respond(self, messages, temperature=1.0, top_p=1.0, max_tokens=32768):
         if self.model_name.startswith("bedrock"):
             responses = completion(
                 model=self.model_name,
@@ -27,6 +27,8 @@ class LiteLlmEngine():
                 max_tokens=max_tokens,
                 temperature=temperature,
                 top_p=top_p,
+                timeout=600,
+                max_retries=3,
             )
         elif self.model_name.startswith("hosted_vllm"):
             responses = completion(
@@ -37,6 +39,8 @@ class LiteLlmEngine():
                 max_tokens=max_tokens,
                 temperature=temperature,
                 top_p=top_p,
+                timeout=600,
+                max_retries=3,
             )
         else:
             responses = completion(
@@ -46,10 +50,12 @@ class LiteLlmEngine():
                 max_tokens=max_tokens,
                 temperature=temperature,
                 top_p=top_p,
+                timeout=600,
+                max_retries=3,
             )
 
         return {
-            "responses": [o.message.content for o in responses.choices],
+            "response": responses.choices[0].message.content, 
             "prompt_tokens": responses.usage.prompt_tokens, 
             "completion_tokens": responses.usage.completion_tokens,
         }
