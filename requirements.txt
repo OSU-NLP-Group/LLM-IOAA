@@ -1,0 +1,4 @@
+litellm
+openai
+boto3
+botocore
