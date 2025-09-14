@@ -1,4 +1,5 @@
-from llm_engines.lite_llm import LiteLlmEngine
+from litellm_engine import LiteLlmEngine
+from prompts import SYS_INST, GEN_INST, TOC
 
 from argparse import ArgumentParser
 from tqdm import tqdm
@@ -7,10 +8,11 @@ import asyncio
 import base64
 import json
 import os
+import random
 
 
 file_lock = asyncio.Lock()
-sem = asyncio.Semaphore(4)
+sem = asyncio.Semaphore(2)
 
 
 async def encode_image(image_path):
@@ -19,31 +21,36 @@ async def encode_image(image_path):
 
 
 async def infer_one_example(example, engine, args, f_handle):
+    prompt = GEN_INST + example['problem'].strip().replace("\n\n", "\n") + "\n\nYou may refer to the following document when solving the problem:\n" + TOC
+
     if len(example['figures']) > 0:
         messages = [
-            {"role": "user", "content": [{"type": "text", "text": example['instruction']}]}
+            {"role": "developer", "content": SYS_INST},
+            {"role": "user", "content": [{"type": "text", "text": prompt}]}
         ]
 
         for fig in example['figures']:
             fig_data = await encode_image(fig)
-            messages[0]["content"].append({
+            messages[1]["content"].append({
                 "type": "image_url",
                 "image_url": {"url": f"data:image/png;base64,{fig_data}"}
             })
     else:
         messages = [
-            {"role": "user", "content": example['instruction']}
+            {"role": "developer", "content": SYS_INST},
+            {"role": "user", "content": prompt}
         ]
 
     responses = await asyncio.to_thread(
         engine.respond,
         messages,
         args.temperature,
-        args.top_p,
+        args.reasoning_effort,
         args.max_tokens
     )
 
     example_out = example.copy()
+    example_out['prompt'] = SYS_INST + prompt
     example_out['response'] = responses['response']
     example_out['prompt_tokens'] = responses['prompt_tokens']
     example_out['completion_tokens'] = responses['completion_tokens']
@@ -122,7 +129,17 @@ if __name__ == "__main__":
         default="",
     )
     parser.add_argument(
-        "--vllm_server",
+        "--azure_api_key",
+        type=str,
+        default="",
+    )
+    parser.add_argument(
+        "--azure_api_base",
+        type=str,
+        default="",
+    )
+    parser.add_argument(
+        "--azure_api_version",
         type=str,
         default="",
     )
@@ -132,14 +149,14 @@ if __name__ == "__main__":
         default=1.0,
     )
     parser.add_argument(
-        "--top_p",
-        type=float,
-        default=1.0,
+        "--reasoning_effort",
+        type=str,
+        default="medium",
     )
     parser.add_argument(
         "--max_tokens",
         type=int,
-        default=32768,
+        default=64000,
     )
     parser.add_argument(
         "--output_file",
@@ -154,6 +171,7 @@ if __name__ == "__main__":
 
     completed = load_completed_filenames(args.output_file)
     data = [ex for ex in data if ex['filename'] not in completed]
+    random.shuffle(data)
 
     if len(completed) > 0:
         print(f"Resuming from {args.output_file}, skipping {len(completed)} completed examples.")
@@ -165,7 +183,9 @@ if __name__ == "__main__":
             "aws_secret_access_key": args.aws_secret_access_key,
             "aws_region_name": args.aws_region_name,
             "openai_api_key": args.openai_api_key,
-            "vllm_server": args.vllm_server
+            "azure_api_key": args.azure_api_key,
+            "azure_api_base": args.azure_api_base,
+            "azure_api_version": args.azure_api_version
         }
     )
 

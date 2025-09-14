@@ -213,4 +213,7 @@ data/*
 results/*
 !results/.gitkeep
 
-ioaa_data.json
+ioaa_data*.json
+*.sh
+*.log
+self_improve.py
