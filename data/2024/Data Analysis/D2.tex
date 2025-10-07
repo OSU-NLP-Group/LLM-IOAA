@@ -1,0 +1,101 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\begin{document}
+
+\section*{D2. Shapley Hypothesis (75 points)}
+Globular clusters are one of the oldest components of galaxies. About a century ago, Harlow Shapley studied the distribution of globular clusters in the Milky Way in order to determine the distance from the Sun to the Galactic Centre, with the hypothesis that globular clusters were symmetrically distributed around the Galactic Centre. The table below shows the positions and distance moduli of a few known globular clusters in the Milky Way. The first three columns in the table show the cluster name, galactic longitude (I), and galactic latitude (b). The fourth column shows the distance modulus (i.e. the difference between the apparent and absolute magnitude), for which the values are extinction-corrected. Based on the data in the table:
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Name & $I$ (degrees) & $b$ (degrees) & Distance modulus (mag) \\
+\hline
+NGC 6522 & 1.025 & -3.926 & 14.3 \\
+\hline
+NGC 6401 & 3.450 & 3.980 & 14.4 \\
+\hline
+NGC 6342 & 4.898 & 9.725 & 14.5 \\
+\hline
+NGC 6553 & 5.253 & -3.029 & 13.6 \\
+\hline
+NGC 6440 & 7.729 & 3.801 & 14.6 \\
+\hline
+Ter 12 & 8.358 & -2.101 & 13.6 \\
+\hline
+VW-CL160 & 10.151 & 0.302 & 14.2 \\
+\hline
+2MASS-GC01 & 10.471 & 0.100 & 12.6 \\
+\hline
+NGC 6517 & 19.225 & 6.762 & 14.8 \\
+\hline
+NGC 6402 & 21.324 & 14.804 & 14.8 \\
+\hline
+NGC 6712 & 25.354 & -4.318 & 14.3 \\
+\hline
+NGC 6426 & 28.087 & 16.234 & 16.6 \\
+\hline
+NGC 5466 & 42.150 & 73.592 & 16.0 \\
+\hline
+NGC 7089 & 53.371 & -35.770 & 15.3 \\
+\hline
+NGC 288 & 151.285 & -89.380 & 14.8 \\
+\hline
+NGC 2298 & 245.629 & -16.006 & 15.0 \\
+\hline
+NGC 4590 & 299.626 & 36.051 & 15.1 \\
+\hline
+NGC 4372 & 300.993 & -9.884 & 13.8 \\
+\hline
+NGC 362 & 301.533 & -46.247 & 14.7 \\
+\hline
+BH 140 & 303.171 & -4.307 & 13.4 \\
+\hline
+NGC 5927 & 326.604 & 4.860 & 14.6 \\
+\hline
+Patchick 126 & 340.381 & -3.826 & 14.5 \\
+\hline
+NGC 5897 & 342.946 & 30.294 & 15.5 \\
+\hline
+NGC 6380 & 350.182 & -3.422 & 14.9 \\
+\hline
+Djor 1 & 356.675 & -2.484 & 15.0 \\
+\hline
+\end{tabular}
+\end{center}
+
+(a) ( $\mathbf{2 5}$ points) Calculate the distance (in parsecs) of each globular cluster from the Sun as well as their Cartesian coordinates $(x, y, z)$. The $x$-axis points to the Galactic Centre and the $y$-axis points in the direction of galactic rotation. The system is right-handed.\\
+(b) ( 15 points) From the given data, estimate the distance from the Sun to the centre of the distribution of globular clusters and its uncertainty.\\
+(c) (30 points) To test the validity of Shapley's hypothesis that globular clusters are symmetrically distributed around the Galactic Centre, make histograms with five bins (i.e. sort the data and divide them into five equally-sized intervals) for each of the distributions in the $x, y$, and $z$ directions. Mark the value of the quartiles ( $Q_{1}, Q_{2}, Q_{3}$ ) of the three distributions with solid lines on the histograms.
+
+Hint: The three quartiles divide the sorted sample into four sections, each containing $25 \%$ of the data, with the second and third sections representing the interquartile range.\\
+(d) (5 points) Using the quartiles, calculate the symmetry factor value for the three distributions as given by:
+
+$$
+\Phi_{x}=\frac{\left|Q_{1, x}+Q_{3, x}-2 Q_{2, x}\right|}{Q_{3, x}-Q_{1, x}}, \Phi_{y}=\frac{\left|Q_{1, y}+Q_{3, y}-2 Q_{2, y}\right|}{Q_{3, y}-Q_{1, y}}, \Phi_{z}=\frac{\left|Q_{1, z}+Q_{3, z}-2 Q_{2, z}\right|}{Q_{3, z}-Q_{1, z}}
+$$
+
+Classify the three distributions in the $x, y$, and $z$ directions based on their calculated symmetry factor values, according to the table shown below. Hence, on the answer sheet, write True (T) if the analysed sample follows Shapley's hypothesis or False (F) otherwise.
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Symmetry factor value & Symmetry type \\
+\hline
+$0.0 \leq \Phi \leq 0.1$ & symmetrical \\
+\hline
+$0.1<\Phi \leq 0.2$ & quasi-symmetrical \\
+\hline
+$\Phi>0.2$ & asymmetrical \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\end{document}

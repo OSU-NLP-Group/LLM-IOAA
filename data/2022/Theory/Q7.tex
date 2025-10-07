@@ -1,0 +1,49 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{caption}
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+
+\section*{7 Georgia to Georgia (20 points)}
+Astronomer Keto was flying west overnight along the shortest possible route from Tbilisi (the capital of Georgia) to Atlanta (the capital of the US state of Georgia). She noticed that she is able to observe the star Furud ( $\zeta \mathrm{CMa}$ ) throughout the entire flight from one of the jet's windows (although it did touch the horizon at one point, when it also happened to be exactly due South).
+
+Calculate the latitude $\phi_{B}$ and longitude $\lambda_{B}$, of Atlanta where she landed.
+
+It is given that:
+
+\begin{itemize}
+  \item The journey had a duration of 11 hours 25 minutes, and the jet travelled at an average speed of $875 \mathrm{~km} / \mathrm{h}$.
+  \item Furud has a declination of $\delta_{F}=-30^{\circ} 4^{\prime}$.
+  \item The coordinates of Tbilisi are $\phi_{A}=41^{\circ} 43^{\prime} \mathrm{N}$ and $\lambda_{A}=41^{\circ} 48^{\prime} \mathrm{E}$.
+  \item You should ignore the effect of the rotation of the Earth during the flight, the altitude of the jet, atmospheric refraction, and any wind.
+\end{itemize}
+
+\end{document}

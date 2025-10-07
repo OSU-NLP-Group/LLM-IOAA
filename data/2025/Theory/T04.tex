@@ -1,0 +1,35 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+
+\begin{document}
+
+    Consider a main sequence star surrounded by a nebula. The observed V-band magnitude of the star is 11.315 mag. The ionised region of nebula close to the star emits $\mathrm{H} \alpha$ and $\mathrm{H} \beta$ lines; their wavelengths are $0.6563 \mu \mathrm{~m}$ and $0.4861 \mu \mathrm{~m}$, respectively. The theoretically predicted ratio of fluxes in $\mathrm{H} \alpha$ to $\mathrm{H} \beta$ lines is $f_{\mathrm{H} \alpha} / f_{\mathrm{H} \beta}=2.86$. However, when this radiation passes through the outer portion of the cold dusty nebula, the observed emission fluxes of $\mathrm{H} \alpha$ and $\mathrm{H} \beta$ lines are $6.80 \times 10^{-15} \mathrm{~W} \mathrm{~m}^{-2}$ and $1.06 \times 10^{-15} \mathrm{~W} \mathrm{~m}^{-2}$, respectively.
+
+    The extinction $A_{\lambda}$ is a function of wavelength and is expressed as
+    
+    $$
+    A_{\lambda}=\kappa(\lambda) E(B-V) .
+    $$
+    
+    Here, $\kappa(\lambda)$ is the extinction curve and $E(B-V)$ denotes the colour excess in the filter bands B and V . The extinction curve (with $\lambda$ in $\mu \mathrm{m}$ ) is given as follows.
+    
+    $$
+    \kappa(\lambda)= \begin{cases}2.659 \times\left(-1.857+\frac{1.040}{\lambda}\right)+R_{V}, & 0.63 \leq \lambda \leq 2.20 \\ 2.659 \times\left(-2.156+\frac{1.509}{\lambda}-\frac{0.198}{\lambda^{2}}+\frac{0.011}{\lambda^{3}}\right)+R_{V}, & 0.12 \leq \lambda<0.63\end{cases}
+    $$
+    
+    where, $R_{V}=A_{V} / E(B-V)=3.1$ is the ratio of total-to-selective extinction.\\
+    (T04.1) Find the values of $\kappa(\mathrm{H} \alpha)$ and $\kappa(\mathrm{H} \beta)$.\\
+    (T04.2) Find the value of the ratio of colour excess $\frac{E(\mathrm{H} \beta-\mathrm{H} \alpha)}{E(B-V)}$.\\
+    (T04.3) Estimate the extinction due to nebula, $A_{\mathrm{H} \alpha}$ and $A_{\mathrm{H} \beta}$, at $\mathrm{H} \alpha$ and $\mathrm{H} \beta$ wavelengths, respectively.\\
+    (T04.4) Estimate the extinction of the nebula ( $A_{V}$ ) and the apparent magnitude of the star in the V band, $m_{\mathrm{V} 0}$, in the absence of the nebula.\\
+
+\end{document}

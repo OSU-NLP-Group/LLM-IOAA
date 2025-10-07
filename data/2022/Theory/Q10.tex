@@ -1,0 +1,57 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{caption}
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+
+\section*{10 Accretion (20 Points)}
+Consider a compact object (such as black hole, white dwarf or neutron star) with a spherically symmetric accretion of gas, assume that accreting gas is hydrogen. As particles fall into the object they heat up and radiate, thus creating radiation pressure acting on rest of the accreting material. This force is given by,
+
+$$
+\begin{aligned}
+F_{L} & =\sigma_{e} \frac{I}{c} \\
+\text { where, } \sigma_{e} & =\frac{8 \pi}{3}\left(\frac{e^{2}}{4 \pi \epsilon_{0} m_{e} c^{2}}\right)^{2}
+\end{aligned}
+$$
+
+is the Thompson cross section for electrons, $c$ is the speed of light and $I$ intensity of the light. Although $F_{L}$ is calculated for electrons, it effectively acts on the whole atom.\\
+(a) If the central compact object has a mass $M$, find an expression for the Eddington limit ( $L_{E}$ ), which is the maximum possible luminosity for the accretion sphere.\\
+(b) For a particular compact object, the luminosity due to material accretion is the same as the Solar luminosity $L_{\odot}$. What is its minimum possible mass of this object to achieve this luminosity (in units of $M_{\odot}$ )?
+
+Assume that the atoms in the accretion sphere originate far away from the compact object. When these atoms fall into the compact object, their gravitational energy is transformed into radiation.\\
+(c) Derive an expression for accretion luminosity ( $L_{\text {acc }}$ ) in terms of the compact object's mass (M), mass accretion rate ( $\dot{M}=\frac{\Delta M}{\Delta t}$ ), and the compact object's radius ( $R$ ).\\
+(d) Show that the maximum possible accretion rate in steady state is not directly dependent on the mass of the compact object.\\
+(e) For an object with $R=12 \times 10^{9} \mathrm{~m}$, calculate the maximum possible accretion rate $\dot{M}$ (in units of $M_{\odot}$ per year).
+
+In reality, the accretion geometry is disk shaped, where most particles trace an almost circular orbit around the compact object. Consider a binary system consisting of a compact object of mass $M_{1}$ and a hydrogen burning star of mass $M_{2}$ at a distance $a$ from each other. The gas from the hydrogen burning star is accreted by the compact object and due to this mass transfer the period of the binary system changes.\\
+(f) Find the condition on the two masses such that the separation between the stars in increasing. Ignore the rotation of the stars.
+
+\end{document}

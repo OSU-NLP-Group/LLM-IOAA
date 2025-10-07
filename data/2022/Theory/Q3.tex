@@ -1,0 +1,41 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{caption}
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+
+\section*{3 Expanding ring nebula (10 Points)}
+A planetary nebula, located 100 pc from the Earth, has the shape of a perfect circular ring with an inner radius of $7.0^{\prime}$ and an outer radius of $8.0^{\prime}$. Its luminosity is powered by the UV radiation from the white dwarf remnant at the center of the nebula. From other observations, we know that 2000 years ago the inner radius of the nebula was $3.5^{\prime}$ and outer radius was $4.0^{\prime}$. We believe that throughout these 2000 years the evolution of the nebula obeys a free expansion scenario, so gravity is negligible and the expansion velocity remains constant with time. Assume that all material in the planetary nebula was ejected at the same instant, but different gas particles have different velocities.\\
+(a) Estimate the range of velocities of the gas particles\\
+(b) Is the assumption of free expansion justified? Write YES or NO alongside appropriate calculations.\\
+(c) If this planetary nebula is bright enough, would an astronaut aboard the International Space Station be able to resolve the thickness of the shell clearly? Write YES or NO alongside with necessary calculations.
+
+\end{document}

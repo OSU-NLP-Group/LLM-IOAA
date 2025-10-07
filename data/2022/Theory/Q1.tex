@@ -1,0 +1,47 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{caption}
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+
+\section*{1 Planck's units (10 points)}
+In Max Planck's system of natural units of measurements, commonly used in cosmology, all units are expressed in terms of 4 fundamental constants: speed of light (c), universal gravitational constant $(G)$, reduced Planck constant ( $\hbar=\frac{h}{2 \pi}$ ) and Boltzmann constant ( $k_{B}$ ). Also, ( $4 \pi \epsilon_{0}$ ) is included in this list of constants.\\
+Using dimensional analysis, find expressions for
+
+\begin{itemize}
+  \item Planck length $\left(L_{p}\right)$,
+  \item Planck time $\left(t_{p}\right)$,
+  \item Planck mass $\left(m_{p}\right)$,
+  \item Planck temperature ( $T_{p}$ ) and
+  \item the Planck charge $\left(q_{p}\right)$.
+\end{itemize}
+
+\end{document}

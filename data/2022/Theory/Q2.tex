@@ -1,0 +1,40 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{caption}
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+
+\section*{2 Circumbinary planet (10 points)}
+A stellar system consists of two main-sequence stars each of $2 M_{\odot}$ orbiting with a period of 4 years in a circular orbit. A circumbinary planet orbits the center of the binary system in the same orbital plane and direction at a fixed distance of 20 au .\\
+(a) Calculate the amount of time it takes for the planet to reappear at the same position relative to the binary system.\\
+(b) At a given instant, what is the maximum fraction of the planet’s surface area which receives light from at least one of the stars? Neglect any atmospheric effects and the sizes of the stars.
+
+\end{document}

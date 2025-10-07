@@ -1,0 +1,138 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{fvextra, csquotes}
+
+\begin{document}
+
+    The Sun occasionally releases magnetized plasma, termed coronal mass ejections (CMEs), that originate from the surface of the Sun and propagate outwards. Accurate prediction of their arrival times at Earth is crucial for understanding and mitigating their potential effects on satellites orbiting the Earth. In this problem, we aim to predict the arrival times of CMEs by developing an empirical model, using the data of 10 CMEs. Throughout this problem, the distance between the Sun's surface and Earth is taken to be $214 R_{\odot}$.
+
+    Further, assume that the Sun is not rotating. Due to electromagnetic, gravitational and drag forces, CMEs experience a variable acceleration throughout their propagation. In the first two parts of this problem , we assume that the region between the Sun and the Earth is vacuum
+    
+    \section*{CMEs through vacuum.}
+    (D02.1) The initial velocity, $u$, at the solar surface $\left(=1 R_{\odot}\right)$, the final velocity, $v$, upon reaching Earth, and the time to arrive at Earth after leaving the surface of the Sun (in hours), $\tau$, are given for 10 CMEs in the following table.
+    
+    \begin{center}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    CME & $u$ & $v$ & $\tau$ \\
+    \hline
+    Name & ( $\mathrm{km} \mathrm{s}^{-1}$ ) & ( $\mathrm{km} \mathrm{s}^{-1}$ ) & (h) \\
+    \hline
+    CME-A & 804 & 470 & 74.5 \\
+    \hline
+    CME-B & 247 & 360 & 127.5 \\
+    \hline
+    CME-C & 523 & 396 & 103.5 \\
+    \hline
+    CME-D & 830 & 415 & 71.0 \\
+    \hline
+    CME-E & 665 & 400 & 104.5 \\
+    \hline
+    CME-F & 347 & 350 & 101.5 \\
+    \hline
+    CME-G & 446 & 375 & 99.5 \\
+    \hline
+    CME-H & 155 & 360 & 97.0 \\
+    \hline
+    CME-I & 1016 & 515 & 67.0 \\
+    \hline
+    CME-J & 683 & 410 & 54.0 \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    (D02.1a) Calculate the average acceleration, $a$, for each CME in $\mathrm{m} \mathrm{s}^{-2}$.\\
+    (D02.1b) We assume an empirical model for the acceleration, $a_{\text {model }}$, of a CME, which depends on its initial velocity $u$ as, $a_{\text {model }}=m\left(\frac{u}{u_{0}}\right)+\alpha$; where, $a_{\text {model }}$ is expressed in $\mathrm{m} \mathrm{s}^{-2}, u$ is expressed in $\mathrm{km} \mathrm{s}^{-1}$ and $u_{0}=1.00 \times 10^{3} \mathrm{~km} \mathrm{~s}^{-1}$.
+    
+    Determine the constants $m$ and $\alpha$ and their associated uncertainties using an appropriate graph (mark your graph as "D02.1b").\\
+    (D02.1c) For each CME, tabulate $a_{\text {model }}$ in $\mathrm{m} \mathrm{s}^{-2}$. Hence calculate the root-mean-square (rms) deviation of accelerations, $\delta a_{\mathrm{rms}}$, between the calculated acceleration, $a$, and the model values, $a_{\text {model }}$.\\
+    (D02.2) We consider two other CMEs: CME-1 and CME-2, with initial velocities, $u=1044 \mathrm{~km} \mathrm{~s}^{-1}$ and $273 \mathrm{~km} \mathrm{~s}^{-1}$, respectively.\\
+    (D02.2a) Using the empirical model obtained in (D02.1b), calculate the predicted arrival times at Earth, $\tau_{1, \mathrm{~m}}$ and $\tau_{2, \mathrm{~m}}$ (in hours), for CME-1 and CME-2, respectively.\\
+    (D02.2b) The observed arrival times at Earth of CME-1 and CME-2 are 46.0 h and 74.5 h , respectively. The empirical model is considered to be VALID for a particular CME if its predicted arrival time is within $20 \%$ of its observed arrival time; otherwise, it is NOT VALID. Indicate the validity of the model for each CME by ticking ( $\checkmark$ ) the appropriate box in the Summary Answersheet.
+    
+    \section*{CMEs in presence of solar wind}
+    In reality, the space between the Sun and the Earth is permeated with the solar wind, which exerts a drag force on CMEs. This drag force can either decelerate or accelerate a CME, depending on the CME's velocity relative to that of the solar wind. To account for the solar wind's influence, we will use a "drag-only" model for distances $R_{\text {obs }}(t) \geq R_{0}$, where $R_{0}$ is the distance beyond which the drag force becomes the dominant force affecting the CME's motion.
+    
+    The distance from the surface of the Sun as determined from the "drag-only" model, $R_{\mathrm{D}}(t)$, and velocity, $V_{\mathrm{D}}(t)$, of a CME in this model is given by
+    
+    $$
+    \begin{aligned}
+    R_{\mathrm{D}}(t) & =\frac{S}{\gamma} \ln \left[1+S \gamma\left(V_{0}-V_{\mathrm{s}}\right)\left(t-t_{0}\right)\right]+V_{\mathrm{s}}\left(t-t_{0}\right)+R_{0} \\
+    V_{\mathrm{D}}(t) & =\frac{V_{0}-V_{\mathrm{s}}}{1+S \gamma\left(V_{0}-V_{\mathrm{s}}\right)\left(t-t_{0}\right)}+V_{\mathrm{s}}
+    \end{aligned}
+    $$
+    
+    where, $\gamma=2 \times 10^{-8} \mathrm{~km}^{-1}, V_{\mathrm{s}}$ is the constant speed of the solar wind, $R_{0}$ and $V_{0}$ are the distance and velocity, respectively, at time $t_{0}$, and $S$ is the sign factor. $S=1$ if $V_{0}>V_{\mathrm{s}} ; S=-1$ if $V_{0} \leq V_{\mathrm{s}}$.\\
+    (D02.3) The tables below show the observed radial distance from the surface of the Sun, $R_{\mathrm{obs}}(t)$ (measured in $R_{\odot}$ ), as a function of time, $t$ (in hours), for two CMEs: CME-3 and CME-4. The last data point in each table (D5 and P8, respectively) corresponds to the arrival time of the respective CME at Earth. For this part, assume $V_{\mathrm{s}}=330 \mathrm{~km} \mathrm{~s}^{-1}$.
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \multicolumn{3}{|c|}{CME-3} \\
+    \hline
+    Data point & $t$ (in h) & $R_{\text {obs }}(t)$ (in $\left.\mathrm{R}_{\odot}\right)$ \\
+    \hline
+    D1 & 0.200 & 6.36 \\
+    \hline
+    D2 & 0.480 & 7.99 \\
+    \hline
+    D3 & 1.22 & 11.99 \\
+    \hline
+    D4 & 1.49 & 13.51 \\
+    \hline
+    D5 & 58.05 & 214 \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    \begin{center}
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \multicolumn{3}{|c|}{CME-4} \\
+    \hline
+    Data point & $t$ (in h) & $R_{\text {obs }}(t)\left(\right.$ in $\left.\mathrm{R}_{\odot}\right)$ \\
+    \hline
+    P1 & 1.00 & 4.00 \\
+    \hline
+    P2 & 3.00 & 6.00 \\
+    \hline
+    P3 & 4.00 & 9.00 \\
+    \hline
+    P4 & 5.00 & 11.0 \\
+    \hline
+    P5 & 21.0 & 43.0 \\
+    \hline
+    P6 & 50.0 & 100 \\
+    \hline
+    P7 & 85.0 & 170 \\
+    \hline
+    P8 & 111 & 214 \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    We shall evaluate if the "drag-only" model satisfactorily predicts the arrival times of these CMEs. To use this model an appropriate choice of $t_{0}$, and corresponding $R_{0}$ and $V_{0}$ needs to be made.\\
+    (D02.3a) For CME-3, take the following two cases:\\
+    $(\mathrm{C} 1) t_{0}$ is taken as the midpoint of the interval $\mathrm{D} 1-\mathrm{D} 2$\\
+    (C2) $t_{0}$ is taken as the midpoint of the interval D3 - D4\\
+    Assume the velocity remains constant in each specific interval D1-D2 and D3-D4, but may differ between the two intervals.
+    
+    Using $t_{0}, R_{0}$, and $V_{0}$, calculate the difference between the observed and the predicted radial distance $\delta R_{\mathrm{D}} \equiv R_{\text {obs }}(t)-R_{\mathrm{D}}(t)$ in units of $\mathrm{R}_{\odot}$ at $t=58.05 \mathrm{~h}$, for each of the two cases.\\
+    (D02.3b) Evaluate $R_{\mathrm{D}}(t)$ at points, P5, P6, P7, and P8 between the Sun and the Earth for CME-4 for the following two cases adopting the procedure similar to (D02.3a):\\
+    $(\mathrm{C} 3) t_{0}$ is taken as the midpoint of the interval $\mathrm{P} 1-\mathrm{P} 2$\\
+    $(\mathrm{C} 4) t_{0}$ is taken as the midpoint of the interval $\mathrm{P} 3-\mathrm{P} 4$.\\
+    (D02.3c) Plot $R_{\mathrm{D}}(t)$ (in $\mathrm{R}_{\odot}$ ) vs $t$ (in hours) for the two cases, C3 and C4, for CME-4 at points, P5, $\mathrm{P} 6, \mathrm{P} 7$ and P 8 (mark your graph as "D02.3c"). On the same graph, draw smooth curves of $R_{\mathrm{D}}(t)$ for the above mentioned two cases. For this part, take the range of $x$ axis from 0 to 180 hr .\\
+    (D02.3d) Using the graph, estimate the absolute difference, $|\delta \tau|$ between the actual arrival time of CME-4 at the Earth and its time of arrival predicted by the drag-only model, for each of the cases C3 and C4.\\
+    (D02.3e) Indicate whether the following statement is TRUE or FALSE by ticking $(\checkmark)$ the appropriate box in the Summary Answersheet (no written justification needed): "The drag forces exerted by the solar wind on CMEs become dominant for CME-3 at an earlier time compared to CME-4".\\
+    (D02.4) Consider drag as the dominant force acting on 10 CMEs in part D02.1. Assume that the "dragonly" model is applicable from the surface of the $\operatorname{Sun}\left(R_{0}=1 \mathrm{R}_{\odot}\right)$ and beyond, for all CMEs. Estimate and tabulate the solar wind speed $V_{\mathrm{s}}$ in $\mathrm{km} \mathrm{s}^{-1}$ for each CME. Further, estimate the average solar wind speed $V_{\mathrm{s}}$, avg for all 10 CMEs.
+
+\end{document}

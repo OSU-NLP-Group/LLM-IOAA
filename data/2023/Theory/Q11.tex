@@ -1,0 +1,48 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{caption}
+\usepackage{multirow}
+
+\DeclareUnicodeCharacter{00D7}{\ifmmode\times\else{$\times$}\fi}
+
+\begin{document}
+
+\section*{Theory 11: 'X-ray emission from galaxy clusters'}
+Clusters of galaxies are strong X-ray sources. It has been established that the emission mechanism is thermal bremsstrahlung (free-free radiation) from a hot hydrogen and helium plasma inside the cluster. The luminosity $L_{X}$ (in Watts) of each component of the plasma is described by the formula:
+
+$$
+L_{X}=6 \times 10^{-41} N_{e} N_{X} T^{\frac{1}{2}} V Z_{X}^{2},
+$$
+
+where the symbols represent:\\
+$X-$ Hydrogen $(\mathrm{H})$ or Helium (He),\\
+$N_{e}-$ number density of electrons $\left[\mathrm{m}^{-3}\right]$,\\
+$N_{X}-$ number density of ions $X\left[\mathrm{~m}^{-3}\right]$,\\
+$Z_{X}$ - atomic number of ion $X$,\\
+$T$ - temperature of the plasma $[\mathrm{K}]$,\\
+$V$ - volume occupied by the plasma $\left[\mathrm{m}^{3}\right]$.\\
+(a) Determine the total mass (in solar masses) of the plasma which emits the X-rays, assuming that:
+
+\begin{itemize}
+  \item the plasma is fully ionized with 1 helium ion for every 10 hydrogen ions;
+  \item $L_{\text {total }}=1.0 \times 10^{37} \mathrm{~W}$,
+  \item $T=80 \times 10^{6} \mathrm{~K}$,
+  \item the plasma is uniformly distributed in a sphere of radius $R=500 \mathrm{kpc}$,
+  \item self-absorption is negligible.\\
+(16 points)\\
+The photons of the cosmic microwave background (CMB) interact with plasma in a process known as inverse Compton scattering. The CMB normally has a thermal blackbody spectrum at a temperature of 2.73 K . However, interaction with the plasma leads to distortion of the CMB spectrum (known as the Sunyaev-Zeldovich effect).\\
+(b) Estimate the mean free path of CMB photons in the plasma, i.e. the average distance travelled by a photon before interacting with an electron. Express it in Mpc. The effective cross section for photon-electron interactions is $\sigma=6.65 \times 10^{-29} \mathrm{~m}^{2}$.\\
+(5 points)\\
+(c) Estimate the typical energy of CMB photons.\\
+(d) The energy of CMB photons can be increased by a factor of up to $(1+\beta) /(1-\beta)$ due to the inverse Compton scattering, where $v=\beta c$ is the velocity of electrons. Estimate the energy of scattered CMB photons.\\
+(6 points)\\
+(Total: 30 points)
+\end{itemize}
+
+\end{document}

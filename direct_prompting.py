@@ -129,21 +129,6 @@ if __name__ == "__main__":
         default="",
     )
     parser.add_argument(
-        "--azure_api_key",
-        type=str,
-        default="",
-    )
-    parser.add_argument(
-        "--azure_api_base",
-        type=str,
-        default="",
-    )
-    parser.add_argument(
-        "--azure_api_version",
-        type=str,
-        default="",
-    )
-    parser.add_argument(
         "--temperature",
         type=float,
         default=1.0,
